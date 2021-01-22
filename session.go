@@ -2,7 +2,6 @@ package go5paisa
 
 import (
 	"errors"
-	"fmt"
 	"net/url"
 )
 
@@ -13,7 +12,6 @@ func (c *Client) GetCookie() (string, error) {
 	}
 	u, _ := url.ParseRequestURI(baseURL)
 	cookies := c.connection.Jar.Cookies(u)
-	fmt.Println(cookies)
 	for _, c := range cookies {
 		if c.Name == "5paisacookie" {
 			return c.Value, nil
