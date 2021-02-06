@@ -3,10 +3,13 @@ package go5paisa
 import (
 	"bytes"
 	"encoding/json"
+
 	// "fmt"
 	"errors"
-	"golang.org/x/net/publicsuffix"
 	"io/ioutil"
+
+	"golang.org/x/net/publicsuffix"
+
 	// "log"
 	"net/http"
 	"net/http/cookiejar"
@@ -133,4 +136,9 @@ func Login(conf *AppConfig, email string, password string, dob string) (*Client,
 		appConfig:  conf,
 	}
 	return client, nil
+}
+
+//GetConnection returns internal http client object
+func (c *Client) GetConnection() *http.Client {
+	return c.connection
 }
